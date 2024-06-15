@@ -12,6 +12,7 @@ class HeadquartersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.amber,
         title: const Text('Sedes de la Institución'),
       ),
       body: FutureBuilder<List<Sede>>(
@@ -30,6 +31,8 @@ class HeadquartersScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final sede = sedes[index];
                 return ListTile(
+                  tileColor: Colors.amber.shade100,
+                  splashColor: Colors.amber.shade400,
                   title: Text(sede.nombre),
                   onTap: () {
                     Navigator.push(

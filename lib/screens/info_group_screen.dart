@@ -11,6 +11,7 @@ class InfoGroupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.amber,
         title: const Text('Información del Grupo'),
       ),
       body: FutureBuilder<Grupo>(
@@ -24,27 +25,34 @@ class InfoGroupScreen extends StatelessWidget {
             return const Center(child: Text('No hay datos disponibles'));
           } else {
             final grupo = snapshot.data!;
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Nombre: ${grupo.nombre}',
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 8),
-                  Text('Sede: ${grupo.sede}',
-                      style: const TextStyle(fontSize: 16)),
-                  const SizedBox(height: 8),
-                  Text('Institución: ${grupo.institucion}',
-                      style: const TextStyle(fontSize: 16)),
-                  const SizedBox(height: 8),
-                  Text('Municipio: ${grupo.municipio}',
-                      style: const TextStyle(fontSize: 16)),
-                  const SizedBox(height: 8),
-                  Text('Número de Grupo: ${grupo.numGrupo}',
-                      style: const TextStyle(fontSize: 16)),
-                ],
+            return Container(
+              margin: const EdgeInsets.all(16),
+              width: double.maxFinite,
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Nombre: ${grupo.nombre}',
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                      const SizedBox(height: 8),
+                      Text('Sede: ${grupo.sede}',
+                          style: const TextStyle(fontSize: 16)),
+                      const SizedBox(height: 8),
+                      Text('Institución: ${grupo.institucion}',
+                          style: const TextStyle(fontSize: 16)),
+                      const SizedBox(height: 8),
+                      Text('Municipio: ${grupo.municipio}',
+                          style: const TextStyle(fontSize: 16)),
+                      const SizedBox(height: 8),
+                      Text('Número de Grupo: ${grupo.numGrupo}',
+                          style: const TextStyle(fontSize: 16)),
+                    ],
+                  ),
+                ),
               ),
             );
           }

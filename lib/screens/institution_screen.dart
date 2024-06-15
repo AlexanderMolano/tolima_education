@@ -12,17 +12,18 @@ class InstitutionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Instituciones en Municipio'),
+        backgroundColor: Colors.amber,
+        title: const Text('Instituciones en Municipio'),
       ),
       body: FutureBuilder<List<Institucion>>(
         future: ApiService().fetchInstituciones(codMun),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No hay datos disponibles'));
+            return const Center(child: Text('No hay datos disponibles'));
           } else {
             final instituciones = snapshot.data!;
             return ListView.builder(
@@ -30,6 +31,8 @@ class InstitutionScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final institucion = instituciones[index];
                 return ListTile(
+                  tileColor: Colors.amber.shade100,
+                  splashColor: Colors.amber.shade400,
                   title: Text(institucion.nombre),
                   onTap: () {
                     Navigator.push(

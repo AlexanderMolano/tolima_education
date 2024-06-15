@@ -19,10 +19,17 @@ class TownshipScreenState extends State<TownshipScreen> {
     futureMunicipios = ApiService().fetchMunicipios();
   }
 
+  String capitalizeFirstLetter(String text) {
+    if (text.isEmpty) return text;
+    return text[0].toUpperCase() + text.substring(1).toLowerCase();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.amber.shade50,
       appBar: AppBar(
+        backgroundColor: Colors.amber,
         title: const Text('Municipios'),
       ),
       body: FutureBuilder<List<Municipio>>(
@@ -41,7 +48,13 @@ class TownshipScreenState extends State<TownshipScreen> {
               itemBuilder: (context, index) {
                 final municipio = municipios[index];
                 return ListTile(
-                  title: Text(municipio.nombre),
+                  tileColor: Colors.amber.shade100,
+                  splashColor: Colors.amber.shade400,
+                  title: Text(
+                    capitalizeFirstLetter(municipio.nombre),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.w500),
+                  ),
                   onTap: () {
                     Navigator.push(
                       context,

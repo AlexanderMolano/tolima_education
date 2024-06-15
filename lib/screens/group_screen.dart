@@ -12,6 +12,7 @@ class GroupsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.amber,
         title: const Text('Grupos en la Sede'),
       ),
       body: FutureBuilder<List<Grupo>>(
@@ -30,6 +31,8 @@ class GroupsScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final grupo = grupos[index];
                 return ListTile(
+                  tileColor: Colors.amber.shade100,
+                  splashColor: Colors.amber.shade400,
                   title: Text(grupo.nombre),
                   onTap: () {
                     Navigator.push(
